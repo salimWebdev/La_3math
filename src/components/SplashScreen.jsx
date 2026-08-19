@@ -10,7 +10,6 @@ const SplashScreen = ({ onStart, onPlayAudio }) => {
   useEffect(() => {
     if (!isOpening) return;
 
-    // Start audio immediately on click
     if (onPlayAudio) {
       onPlayAudio();
     }
@@ -152,7 +151,7 @@ const SplashScreen = ({ onStart, onPlayAudio }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden">
       {/* Deep rich background */}
       <div className="absolute inset-0 bg-gradient-to-br from-dark-sepia via-[#2C1810] to-dark-sepia" />
 
@@ -164,79 +163,96 @@ const SplashScreen = ({ onStart, onPlayAudio }) => {
 
       {/* Radial glow behind frame */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className={`w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] md:w-[600px] md:h-[600px] bg-vintage-gold rounded-full blur-3xl transition-all duration-700 ${
+        <div className={`w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] md:w-[600px] md:h-[600px] bg-vintage-gold rounded-full blur-3xl transition-all duration-700 ${
           phase === 'sparkle' ? 'opacity-30 scale-150' : phase === 'dissolve' ? 'opacity-50 scale-200' : 'opacity-10'
         }`} />
       </div>
 
-      {/* Main ornate frame */}
-      <div className={`relative z-10 text-center px-4 transition-all duration-700 ${
+      {/* Main content */}
+      <div className={`relative z-10 w-full max-w-lg mx-auto px-6 transition-all duration-700 ${
         phase === 'idle' ? 'opacity-100 scale-100' :
         phase === 'sparkle' ? 'opacity-100 scale-105' :
         phase === 'dissolve' ? 'opacity-0 scale-110 blur-sm' :
         'opacity-0 scale-95 blur-md'
       }`}>
-        {/* Corner ornaments */}
-        <div className={`absolute -top-5 -left-5 sm:-top-8 sm:-left-8 text-3xl sm:text-5xl text-vintage-gold opacity-60 transition-all duration-500 ${
-          phase !== 'idle' ? 'opacity-0 -translate-x-4 -translate-y-4' : ''
-        }`} style={{textShadow: '0 0 10px rgba(184,134,11,0.3)'}}>❧</div>
-        <div className={`absolute -top-5 -right-5 sm:-top-8 sm:-right-8 text-3xl sm:text-5xl text-vintage-gold opacity-60 rotate-90 transition-all duration-500 ${
-          phase !== 'idle' ? 'opacity-0 translate-x-4 -translate-y-4' : ''
-        }`} style={{textShadow: '0 0 10px rgba(184,134,11,0.3)'}}>❧</div>
-        <div className={`absolute -bottom-5 -left-5 sm:-bottom-8 sm:-left-8 text-3xl sm:text-5xl text-vintage-gold opacity-60 -rotate-90 transition-all duration-500 ${
-          phase !== 'idle' ? 'opacity-0 -translate-x-4 translate-y-4' : ''
-        }`} style={{textShadow: '0 0 10px rgba(184,134,11,0.3)'}}>❧</div>
-        <div className={`absolute -bottom-5 -right-5 sm:-bottom-8 sm:-right-8 text-3xl sm:text-5xl text-vintage-gold opacity-60 rotate-180 transition-all duration-500 ${
-          phase !== 'idle' ? 'opacity-0 translate-x-4 translate-y-4' : ''
-        }`} style={{textShadow: '0 0 10px rgba(184,134,11,0.3)'}}>❧</div>
 
-        {/* The baroque frame image with text overlay */}
-        <div className="relative max-w-2xl mx-auto">
-          <img
-            src="https://res.cloudinary.com/gdbmrkzo/image/upload/f_auto,q_auto,w_800/v1787178108/mn3jkew610p5wnghz7sf.png"
-            alt="Ornate Frame"
-            className="w-full h-auto drop-shadow-2xl"
-            style={{ filter: 'drop-shadow(0 10px 40px rgba(30,15,8,0.6))' }}
-          />
+        {/* Desktop: Frame with text overlay */}
+        <div className="hidden md:block relative">
+          {/* Corner ornaments */}
+          <div className={`absolute -top-10 -left-10 text-5xl text-vintage-gold opacity-60 transition-all duration-500 ${
+            phase !== 'idle' ? 'opacity-0 -translate-x-4 -translate-y-4' : ''
+          }`} style={{textShadow: '0 0 10px rgba(184,134,11,0.3)'}}>❧</div>
+          <div className={`absolute -top-10 -right-10 text-5xl text-vintage-gold opacity-60 rotate-90 transition-all duration-500 ${
+            phase !== 'idle' ? 'opacity-0 translate-x-4 -translate-y-4' : ''
+          }`} style={{textShadow: '0 0 10px rgba(184,134,11,0.3)'}}>❧</div>
+          <div className={`absolute -bottom-10 -left-10 text-5xl text-vintage-gold opacity-60 -rotate-90 transition-all duration-500 ${
+            phase !== 'idle' ? 'opacity-0 -translate-x-4 translate-y-4' : ''
+          }`} style={{textShadow: '0 0 10px rgba(184,134,11,0.3)'}}>❧</div>
+          <div className={`absolute -bottom-10 -right-10 text-5xl text-vintage-gold opacity-60 rotate-180 transition-all duration-500 ${
+            phase !== 'idle' ? 'opacity-0 translate-x-4 translate-y-4' : ''
+          }`} style={{textShadow: '0 0 10px rgba(184,134,11,0.3)'}}>❧</div>
 
-          <div className="absolute inset-0 flex flex-col items-center justify-center px-[12%] sm:px-[15%] py-[10%] sm:py-[12%]">
-            <p className="font-script text-[#8B6914] text-xs sm:text-sm md:text-base mb-1 opacity-80">
-              Welcome to the
-            </p>
-            <h1 className="font-serif text-[#3E2723] text-2xl sm:text-3xl md:text-5xl lg:text-[3rem] leading-none mb-2 text-center embossed-text">
-              Class of 2026
-            </h1>
-            <p className="font-body text-[#8B6914] text-[0.6rem] sm:text-xs md:text-sm italic tracking-wide mb-2 opacity-65">
-              "Together We Shined"
-            </p>
-            <div className="flex items-center gap-1.5 sm:gap-2 mb-2 opacity-50">
-              <svg width="24" height="8" viewBox="0 0 36 10" className="sm:w-9 sm:h-3">
-                <path d="M0 5 Q9 0, 18 5 Q27 10, 36 5" fill="none" stroke="#B8860B" strokeWidth="1"/>
-              </svg>
-              <span className="text-[#B8860B] text-[0.5rem] sm:text-xs">✦</span>
-              <svg width="24" height="8" viewBox="0 0 36 10" className="sm:w-9 sm:h-3 scale-x-[-1]">
-                <path d="M0 5 Q9 0, 18 5 Q27 10, 36 5" fill="none" stroke="#B8860B" strokeWidth="1"/>
-              </svg>
+          <div className="relative">
+            <img
+              src="https://res.cloudinary.com/gdbmrkzo/image/upload/f_auto,q_auto,w_800/v1787178108/mn3jkew610p5wnghz7sf.png"
+              alt="Ornate Frame"
+              className="w-full h-auto drop-shadow-2xl"
+              style={{ filter: 'drop-shadow(0 10px 40px rgba(30,15,8,0.6))' }}
+            />
+            <div className="absolute inset-0 flex flex-col items-center justify-center px-[15%] py-[12%]">
+              <p className="font-script text-[#8B6914] text-base mb-1 opacity-80">Welcome to the</p>
+              <h1 className="font-serif text-[#3E2723] text-5xl leading-none mb-2 text-center embossed-text">Class of 2026</h1>
+              <p className="font-body text-[#8B6914] text-sm italic tracking-wide mb-2 opacity-65">"Together We Shined"</p>
+              <div className="flex items-center gap-2 mb-2 opacity-50">
+                <svg width="36" height="10" viewBox="0 0 36 10"><path d="M0 5 Q9 0, 18 5 Q27 10, 36 5" fill="none" stroke="#B8860B" strokeWidth="1"/></svg>
+                <span className="text-[#B8860B] text-xs">✦</span>
+                <svg width="36" height="10" viewBox="0 0 36 10" className="scale-x-[-1]"><path d="M0 5 Q9 0, 18 5 Q27 10, 36 5" fill="none" stroke="#B8860B" strokeWidth="1"/></svg>
+              </div>
+              <div className="inline-block rounded-full px-5 py-1" style={{ background: 'linear-gradient(135deg, #6B3A1C, #5C2E14)', border: '1.5px solid #B8860B', boxShadow: '0 2px 8px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.12)' }}>
+                <span className="font-serif text-[#FAF0E6] text-[0.6rem] tracking-[0.3em] uppercase">2024 — 2026</span>
+              </div>
             </div>
-            <div className="inline-block rounded-full px-3 sm:px-5 py-0.5 sm:py-1"
-                 style={{
-                   background: 'linear-gradient(135deg, #6B3A1C, #5C2E14)',
-                   border: '1.5px solid #B8860B',
-                   boxShadow: '0 2px 8px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.12)'
-                 }}>
-              <span className="font-serif text-[#FAF0E6] text-[0.45rem] sm:text-[0.6rem] tracking-[0.2em] sm:tracking-[0.3em] uppercase">
-                2024 — 2026
-              </span>
+          </div>
+        </div>
+
+        {/* Mobile: Frame image + text below, elegantly separated */}
+        <div className="md:hidden flex flex-col items-center">
+          {/* Ornate frame as decorative top element */}
+          <div className="relative w-48 mb-6">
+            <img
+              src="https://res.cloudinary.com/gdbmrkzo/image/upload/f_auto,q_auto,w_400/v1787178108/mn3jkew610p5wnghz7sf.png"
+              alt="Ornate Frame"
+              className="w-full h-auto drop-shadow-xl opacity-40"
+              style={{ filter: 'drop-shadow(0 8px 25px rgba(30,15,8,0.5))' }}
+            />
+          </div>
+
+          {/* Text content - clean and centered below frame */}
+          <div className="text-center -mt-32 relative z-10">
+            <p className="font-script text-[#D2B48C] text-sm mb-2 opacity-80">Welcome to the</p>
+            <h1 className="font-serif text-[#FAF0E6] text-4xl leading-none mb-3 embossed-text">Class of 2026</h1>
+            <p className="font-body text-[#D2B48C] text-xs italic tracking-wide mb-4 opacity-70">"Together We Shined"</p>
+
+            {/* Ornate divider */}
+            <div className="flex items-center justify-center gap-2 mb-4 opacity-50">
+              <div className="w-10 h-px bg-gradient-to-r from-transparent to-[#B8860B]" />
+              <span className="text-[#B8860B] text-xs">✦</span>
+              <div className="w-10 h-px bg-gradient-to-l from-transparent to-[#B8860B]" />
+            </div>
+
+            {/* Year badge */}
+            <div className="inline-block rounded-full px-5 py-1.5" style={{ background: 'linear-gradient(135deg, #6B3A1C, #5C2E14)', border: '1.5px solid #B8860B', boxShadow: '0 4px 15px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.12)' }}>
+              <span className="font-serif text-[#FAF0E6] text-[0.6rem] tracking-[0.3em] uppercase">2024 — 2026</span>
             </div>
           </div>
         </div>
 
         {/* Call to action button */}
-        <div className="mt-6 sm:mt-8">
+        <div className="mt-8 sm:mt-10 text-center">
           <button
             onClick={handleClick}
             disabled={isOpening}
-            className={`vintage-button font-serif text-base sm:text-lg md:text-xl px-6 sm:px-10 py-3 sm:py-4 rounded-sm tracking-wide uppercase transition-all duration-300 ${
+            className={`vintage-button font-serif text-base sm:text-lg px-8 sm:px-10 py-3 sm:py-4 rounded-sm tracking-wide uppercase transition-all duration-300 ${
               isOpening ? 'scale-110 shadow-[0_0_40px_rgba(184,134,11,0.6)]' : ''
             }`}
           >
@@ -247,15 +263,9 @@ const SplashScreen = ({ onStart, onPlayAudio }) => {
           </button>
         </div>
 
-        <p className="font-script text-warm-beige text-sm italic opacity-50 mt-4">
+        <p className="font-script text-warm-beige text-xs sm:text-sm italic opacity-50 mt-4 text-center">
           Click to begin our story
         </p>
-
-        {/* Floating vintage elements - hidden on small screens */}
-        <div className="hidden sm:block absolute -top-10 left-1/4 text-3xl opacity-20 wind-drift" style={{ animationDelay: '0s' }}>📷</div>
-        <div className="hidden sm:block absolute -bottom-10 right-1/4 text-3xl opacity-20 wind-drift" style={{ animationDelay: '1.5s' }}>🎵</div>
-        <div className="hidden md:block absolute top-1/2 -left-14 text-2xl opacity-15 wind-drift" style={{ animationDelay: '0.8s' }}>🎞️</div>
-        <div className="hidden md:block absolute top-1/2 -right-14 text-2xl opacity-15 wind-drift" style={{ animationDelay: '2s' }}>✉️</div>
       </div>
 
       {/* Sparkle canvas */}
