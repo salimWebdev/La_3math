@@ -199,32 +199,32 @@ const SplashScreen = ({ onStart, onPlayAudio }) => {
             style={{ filter: 'drop-shadow(0 10px 40px rgba(30,15,8,0.6))' }}
           />
 
-          <div className="absolute inset-0 flex flex-col items-center justify-center px-[15%] py-[12%]">
-            <p className="font-script text-[#8B6914] text-sm md:text-base mb-1 opacity-80">
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-[12%] sm:px-[15%] py-[10%] sm:py-[12%]">
+            <p className="font-script text-[#8B6914] text-xs sm:text-sm md:text-base mb-1 opacity-80">
               Welcome to the
             </p>
-            <h1 className="font-serif text-[#3E2723] text-3xl sm:text-4xl md:text-5xl lg:text-[3rem] leading-none mb-2 text-center embossed-text">
+            <h1 className="font-serif text-[#3E2723] text-2xl sm:text-3xl md:text-5xl lg:text-[3rem] leading-none mb-2 text-center embossed-text">
               Class of 2026
             </h1>
-            <p className="font-body text-[#8B6914] text-xs md:text-sm italic tracking-wide mb-2 opacity-65">
+            <p className="font-body text-[#8B6914] text-[0.6rem] sm:text-xs md:text-sm italic tracking-wide mb-2 opacity-65">
               "Together We Shined"
             </p>
-            <div className="flex items-center gap-2 mb-2 opacity-50">
-              <svg width="36" height="10" viewBox="0 0 36 10">
+            <div className="flex items-center gap-1.5 sm:gap-2 mb-2 opacity-50">
+              <svg width="24" height="8" viewBox="0 0 36 10" className="sm:w-9 sm:h-3">
                 <path d="M0 5 Q9 0, 18 5 Q27 10, 36 5" fill="none" stroke="#B8860B" strokeWidth="1"/>
               </svg>
-              <span className="text-[#B8860B] text-xs">✦</span>
-              <svg width="36" height="10" viewBox="0 0 36 10" className="scale-x-[-1]">
+              <span className="text-[#B8860B] text-[0.5rem] sm:text-xs">✦</span>
+              <svg width="24" height="8" viewBox="0 0 36 10" className="sm:w-9 sm:h-3 scale-x-[-1]">
                 <path d="M0 5 Q9 0, 18 5 Q27 10, 36 5" fill="none" stroke="#B8860B" strokeWidth="1"/>
               </svg>
             </div>
-            <div className="inline-block rounded-full px-5 py-1"
+            <div className="inline-block rounded-full px-3 sm:px-5 py-0.5 sm:py-1"
                  style={{
                    background: 'linear-gradient(135deg, #6B3A1C, #5C2E14)',
                    border: '1.5px solid #B8860B',
                    boxShadow: '0 2px 8px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.12)'
                  }}>
-              <span className="font-serif text-[#FAF0E6] text-[0.6rem] tracking-[0.3em] uppercase">
+              <span className="font-serif text-[#FAF0E6] text-[0.45rem] sm:text-[0.6rem] tracking-[0.2em] sm:tracking-[0.3em] uppercase">
                 2024 — 2026
               </span>
             </div>
