@@ -10,7 +10,7 @@ const getVideoThumbnail = (videoUrl) => {
 
 const getOptimizedVideoUrl = (videoUrl) => {
   return videoUrl
-    .replace('/video/upload/', '/video/upload/f_auto,q_auto,w_720,br_1m,so_0/')
+    .replace('/video/upload/', '/video/upload/f_auto,q_auto:low,w_480,br_500k,so_0/')
     .replace('.mp4', '.mp4');
 };
 
