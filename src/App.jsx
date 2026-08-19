@@ -71,7 +71,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#2C1810] film-grain">
+    <div className="min-h-screen bg-[#2C1810] film-grain overflow-x-hidden">
       {/* Background Music */}
       <audio ref={audioRef} loop preload="auto">
         <source src="/assets/audio/bg-music.mp3" type="audio/mpeg" />
