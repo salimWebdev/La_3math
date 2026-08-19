@@ -215,28 +215,22 @@ const SplashScreen = ({ onStart, onPlayAudio }) => {
           </div>
         </div>
 
-        {/* Mobile: Frame with text overlay */}
-        <div className="md:hidden relative">
-          <div className="relative">
-            <img
-              src="https://res.cloudinary.com/gdbmrkzo/image/upload/f_auto,q_auto,w_1200/v1787178108/mn3jkew610p5wnghz7sf.png"
-              alt="Ornate Frame"
-              className="w-full h-auto drop-shadow-2xl"
-              style={{ filter: 'drop-shadow(0 10px 40px rgba(30,15,8,0.6))' }}
-            />
-            <div className="absolute inset-0 flex flex-col items-center justify-center px-[12%] py-[9%]">
-              <p className="font-script text-[#8B6914] text-sm mb-1 opacity-80">Welcome to the</p>
-              <h1 className="font-serif text-[#3E2723] text-3xl leading-none mb-2 text-center embossed-text">Class of 2026</h1>
-              <p className="font-body text-[#8B6914] text-[0.6rem] italic tracking-wide mb-2 opacity-65">"Together We Shined"</p>
-              <div className="flex items-center gap-2 mb-2 opacity-50">
-                <svg width="24" height="8" viewBox="0 0 36 10"><path d="M0 5 Q9 0, 18 5 Q27 10, 36 5" fill="none" stroke="#B8860B" strokeWidth="1"/></svg>
-                <span className="text-[#B8860B] text-[0.5rem]">✦</span>
-                <svg width="24" height="8" viewBox="0 0 36 10" className="scale-x-[-1]"><path d="M0 5 Q9 0, 18 5 Q27 10, 36 5" fill="none" stroke="#B8860B" strokeWidth="1"/></svg>
-              </div>
-              <div className="inline-block rounded-full px-4 py-1" style={{ background: 'linear-gradient(135deg, #6B3A1C, #5C2E14)', border: '1.5px solid #B8860B', boxShadow: '0 2px 8px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.12)' }}>
-                <span className="font-serif text-[#FAF0E6] text-[0.5rem] tracking-[0.25em] uppercase">2024 — 2026</span>
-              </div>
-            </div>
+        {/* Mobile: Text only, no frame background */}
+        <div className="md:hidden text-center">
+          <p className="font-script text-[#D2B48C] text-base mb-2 opacity-80">Welcome to the</p>
+          <h1 className="font-serif text-[#FAF0E6] text-4xl leading-none mb-3 embossed-text">Class of 2026</h1>
+          <p className="font-body text-[#D2B48C] text-xs italic tracking-wide mb-4 opacity-70">"Together We Shined"</p>
+
+          {/* Ornate divider */}
+          <div className="flex items-center justify-center gap-2 mb-4 opacity-50">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#B8860B]" />
+            <span className="text-[#B8860B] text-xs">✦</span>
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#B8860B]" />
+          </div>
+
+          {/* Year badge */}
+          <div className="inline-block rounded-full px-6 py-1.5" style={{ background: 'linear-gradient(135deg, #6B3A1C, #5C2E14)', border: '1.5px solid #B8860B', boxShadow: '0 4px 15px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.12)' }}>
+            <span className="font-serif text-[#FAF0E6] text-[0.6rem] tracking-[0.3em] uppercase">2024 — 2026</span>
           </div>
         </div>
 
