@@ -228,7 +228,7 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                   <video
                     src={selectedSouvenir.src}
                     controls
-                    preload="none"
+                    preload="auto"
                     style={{ width: '100%', maxHeight: '60vh', objectFit: 'contain', borderRadius: '2px' }}
                     onPlay={handleVideoPlay}
                     onPause={handleVideoPause}
