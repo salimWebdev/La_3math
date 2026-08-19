@@ -47,7 +47,7 @@ const ClassmatesPage = () => {
                     {/* Gold frame photo */}
                     <div className="relative w-full max-w-[280px] sm:max-w-[340px] mb-4 sm:mb-5">
                       <img
-                        src="https://res.cloudinary.com/gdbmrkzo/image/upload/f_auto,q_auto,w_600/v1787178145/dx3uye0hwljxlocmlho9.png"
+                        src="https://res.cloudinary.com/gdbmrkzo/image/upload/v1787178145/dx3uye0hwljxlocmlho9.png"
                         alt="Frame"
                         className="w-full h-auto"
                         style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.3))' }}

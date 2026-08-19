@@ -202,7 +202,7 @@ function App() {
           {/* Header */}
           <header className="relative overflow-hidden">
             <img
-              src="https://res.cloudinary.com/gdbmrkzo/image/upload/f_auto,q_auto,w_1920/v1787178320/uvk2lvkwqyab8drqso4q.jpg"
+              src="https://res.cloudinary.com/gdbmrkzo/image/upload/v1787178320/uvk2lvkwqyab8drqso4q.jpg"
               alt="Welcome Class of 2026"
               className="w-full h-auto"
               style={{ filter: 'drop-shadow(0 4px 20px rgba(30,15,8,0.4))' }}
