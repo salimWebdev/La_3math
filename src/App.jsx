@@ -209,7 +209,7 @@ function App() {
             />
 
             {/* Text content overlaid on the image */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center px-4 py-6 sm:px-[10%] sm:py-[10%] md:px-[15%] md:py-[12%]">
+            <div className="absolute inset-0 flex flex-col items-center justify-center px-4 py-12 sm:px-[10%] sm:py-[10%] md:px-[15%] md:py-[12%]">
               <p className="font-script text-[#8B6914] text-xs sm:text-sm md:text-base mb-1 opacity-80 wind-drift">
                 Welcome to the
               </p>
