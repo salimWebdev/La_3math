@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { souvenirs } from '../data/memoryData';
 
@@ -8,11 +8,33 @@ const getVideoThumbnail = (videoUrl) => {
     .replace('.mp4', '.jpg');
 };
 
+const getOptimizedVideoUrl = (videoUrl) => {
+  return videoUrl
+    .replace('/video/upload/', '/video/upload/f_auto,q_auto,w_1280,br_2m/')
+    .replace('.mp4', '.mp4');
+};
+
 const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
   const [selectedSouvenir, setSelectedSouvenir] = useState(null);
+  const [videoLoading, setVideoLoading] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (selectedSouvenir?.type === 'video') {
+      setVideoLoading(true);
+      setVideoReady(false);
+    }
+  }, [selectedSouvenir]);
 
   const closeLightbox = () => {
     setSelectedSouvenir(null);
+    setVideoLoading(false);
+    setVideoReady(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.src = '';
+    }
     if (onResumeAudio) onResumeAudio();
   };
 
@@ -26,6 +48,19 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
 
   const handleVideoEnded = () => {
     if (onResumeAudio) onResumeAudio();
+  };
+
+  const handleVideoLoadedData = () => {
+    setVideoLoading(false);
+    setVideoReady(true);
+  };
+
+  const handleVideoWaiting = () => {
+    setVideoLoading(true);
+  };
+
+  const handleVideoCanPlay = () => {
+    setVideoLoading(false);
   };
 
   return (
@@ -223,19 +258,65 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
           >
             {/* Media in ornate frame */}
             <div className="double-frame rounded-sm p-2" style={{ width: '100%', flexShrink: 0 }}>
-              <div className="ornate-frame rounded-sm p-2" style={{ overflow: 'hidden' }}>
+              <div className="ornate-frame rounded-sm p-2" style={{ overflow: 'hidden', position: 'relative' }}>
                 {selectedSouvenir.type === 'video' ? (
-                  <video
-                    src={selectedSouvenir.src}
-                    controls
-                    preload="auto"
-                    style={{ width: '100%', maxHeight: '60vh', objectFit: 'contain', borderRadius: '2px' }}
-                    onPlay={handleVideoPlay}
-                    onPause={handleVideoPause}
-                    onEnded={handleVideoEnded}
-                  >
-                    Your browser does not support the video tag.
-                  </video>
+                  <>
+                    {/* Loading spinner */}
+                    {videoLoading && (
+                      <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        background: 'rgba(26, 15, 10, 0.8)',
+                        zIndex: 5,
+                        borderRadius: '2px'
+                      }}>
+                        <div style={{
+                          width: '48px',
+                          height: '48px',
+                          border: '3px solid rgba(184, 134, 11, 0.3)',
+                          borderTopColor: '#B8860B',
+                          borderRadius: '50%',
+                          animation: 'spin 1s linear infinite'
+                        }} />
+                        <p style={{
+                          color: '#D2B48C',
+                          fontSize: '14px',
+                          marginTop: '12px',
+                          fontFamily: 'Lora, Georgia, serif',
+                          fontStyle: 'italic'
+                        }}>
+                          Loading video...
+                        </p>
+                      </div>
+                    )}
+                    <video
+                      ref={videoRef}
+                      src={getOptimizedVideoUrl(selectedSouvenir.src)}
+                      poster={getVideoThumbnail(selectedSouvenir.src)}
+                      controls
+                      preload="auto"
+                      style={{
+                        width: '100%',
+                        maxHeight: '60vh',
+                        objectFit: 'contain',
+                        borderRadius: '2px',
+                        opacity: videoReady ? 1 : 0,
+                        transition: 'opacity 0.3s ease'
+                      }}
+                      onPlay={handleVideoPlay}
+                      onPause={handleVideoPause}
+                      onEnded={handleVideoEnded}
+                      onLoadedData={handleVideoLoadedData}
+                      onWaiting={handleVideoWaiting}
+                      onCanPlay={handleVideoCanPlay}
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </>
                 ) : (
                   <img
                     src={selectedSouvenir.src}
@@ -256,9 +337,6 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
               <p className="font-body" style={{ fontSize: '16px', color: '#FAF0E6', fontStyle: 'italic' }}>
                 "{selectedSouvenir.caption}"
               </p>
-              <p className="font-script" style={{ fontSize: '14px', color: '#D2B48C', marginTop: '8px', opacity: 0.7 }}>
-                {selectedSouvenir.date}
-              </p>
             </div>
           </div>
         </div>,
@@ -275,6 +353,12 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
           </div>
         </div>
       )}
+
+      <style>{`
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   );
 };
