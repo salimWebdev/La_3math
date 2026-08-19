@@ -4,13 +4,13 @@ import { souvenirs } from '../data/memoryData';
 
 const getVideoThumbnail = (videoUrl) => {
   return videoUrl
-    .replace('/video/upload/', '/video/upload/f_auto,q_auto,w_600,so_0/')
+    .replace('/video/upload/', '/video/upload/f_auto,q_auto,w_400,so_0/')
     .replace('.mp4', '.jpg');
 };
 
 const getOptimizedVideoUrl = (videoUrl) => {
   return videoUrl
-    .replace('/video/upload/', '/video/upload/f_auto,q_auto,w_1280,br_2m/')
+    .replace('/video/upload/', '/video/upload/f_auto,q_auto,w_720,br_1m,so_0/')
     .replace('.mp4', '.mp4');
 };
 
