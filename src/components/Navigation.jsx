@@ -39,11 +39,11 @@ const Navigation = ({ currentPage, onNavigate }) => {
   return (
     <nav className="relative z-40">
       {/* Navbar bar - overflow hidden clips the bg image and overlays */}
-      <div className="relative overflow-hidden min-h-[70px] sm:min-h-[80px] md:min-h-[90px]" ref={menuRef}>
+      <div className="relative overflow-hidden" ref={menuRef}>
         <img
               src="https://res.cloudinary.com/gdbmrkzo/image/upload/v1787178148/ahlc4lvgtjn4p4g5jp2p.png"
           alt="Navigation"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="w-full h-auto"
           style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.3))' }}
         />
 
