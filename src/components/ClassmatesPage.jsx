@@ -59,6 +59,7 @@ const ClassmatesPage = () => {
                             src={classmate.photo}
                             alt={classmate.name}
                             className="w-full h-full object-cover sepia-photo"
+                            loading="lazy"
                             onError={(e) => {
                               e.target.style.display = 'none';
                               e.target.parentElement.querySelector('.placeholder-icon').style.display = 'flex';

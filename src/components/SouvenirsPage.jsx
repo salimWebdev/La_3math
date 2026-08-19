@@ -86,7 +86,7 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                           <video
                             src={souvenir.src}
                             className="w-full object-cover sepia-photo"
-                            preload="metadata"
+                            preload="none"
                             onError={(e) => {
                               e.target.style.display = 'none';
                               e.target.parentElement.querySelector('.placeholder-icon').style.display = 'flex';
@@ -115,6 +115,7 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                             src={souvenir.src}
                             alt={souvenir.caption}
                             className="w-full h-full object-cover sepia-photo"
+                            loading="lazy"
                             onError={(e) => {
                               e.target.style.display = 'none';
                               e.target.parentElement.querySelector('.placeholder-icon').style.display = 'flex';
