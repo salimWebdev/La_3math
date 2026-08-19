@@ -193,7 +193,7 @@ const SplashScreen = ({ onStart, onPlayAudio }) => {
         {/* The baroque frame image with text overlay */}
         <div className="relative max-w-2xl mx-auto">
           <img
-            src="https://res.cloudinary.com/gdbmrkzo/image/upload/v1787178108/mn3jkew610p5wnghz7sf.png"
+            src="https://res.cloudinary.com/gdbmrkzo/image/upload/f_auto,q_auto,w_800/v1787178108/mn3jkew610p5wnghz7sf.png"
             alt="Ornate Frame"
             className="w-full h-auto drop-shadow-2xl"
             style={{ filter: 'drop-shadow(0 10px 40px rgba(30,15,8,0.6))' }}

@@ -2,6 +2,12 @@ import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { souvenirs } from '../data/memoryData';
 
+const getVideoThumbnail = (videoUrl) => {
+  return videoUrl
+    .replace('/video/upload/', '/video/upload/f_auto,q_auto,w_600,so_0/')
+    .replace('.mp4', '.jpg');
+};
+
 const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
   const [selectedSouvenir, setSelectedSouvenir] = useState(null);
 
@@ -83,10 +89,11 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                     <div className="bg-gradient-to-br from-parchment to-cream photo-inner-shadow overflow-hidden rounded-sm">
                       {souvenir.type === 'video' ? (
                         <div className="relative">
-                          <video
-                            src={souvenir.src}
+                          <img
+                            src={getVideoThumbnail(souvenir.src)}
+                            alt={souvenir.caption}
                             className="w-full object-cover sepia-photo"
-                            preload="none"
+                            loading="lazy"
                             onError={(e) => {
                               e.target.style.display = 'none';
                               e.target.parentElement.querySelector('.placeholder-icon').style.display = 'flex';
@@ -221,7 +228,7 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                   <video
                     src={selectedSouvenir.src}
                     controls
-                    autoPlay
+                    preload="none"
                     style={{ width: '100%', maxHeight: '60vh', objectFit: 'contain', borderRadius: '2px' }}
                     onPlay={handleVideoPlay}
                     onPause={handleVideoPause}
