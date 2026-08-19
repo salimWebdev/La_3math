@@ -14,15 +14,20 @@ const PARTICLE_TYPES = [
 
 const WindParticles = ({ count = 18 }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [particleCount, setParticleCount] = useState(count);
 
   useEffect(() => {
+    // Reduce particles on mobile for performance
+    const isMobile = window.innerWidth < 768;
+    setParticleCount(isMobile ? Math.min(count, 6) : count);
+    
     // Delay particles until after splash screen
     const timer = setTimeout(() => setIsVisible(true), 2000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [count]);
 
   const particles = useMemo(() => {
-    return Array.from({ length: count }, (_, i) => {
+    return Array.from({ length: particleCount }, (_, i) => {
       const particleType = PARTICLE_TYPES[i % PARTICLE_TYPES.length];
       const size = 8 + Math.random() * 14;
       const startX = Math.random() * 100;
@@ -48,7 +53,7 @@ const WindParticles = ({ count = 18 }) => {
         opacity,
       };
     });
-  }, [count]);
+  }, [particleCount]);
 
   if (!isVisible) return null;
 

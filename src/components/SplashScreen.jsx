@@ -164,7 +164,7 @@ const SplashScreen = ({ onStart, onPlayAudio }) => {
 
       {/* Radial glow behind frame */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className={`w-[600px] h-[600px] bg-vintage-gold rounded-full blur-3xl transition-all duration-700 ${
+        <div className={`w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] md:w-[600px] md:h-[600px] bg-vintage-gold rounded-full blur-3xl transition-all duration-700 ${
           phase === 'sparkle' ? 'opacity-30 scale-150' : phase === 'dissolve' ? 'opacity-50 scale-200' : 'opacity-10'
         }`} />
       </div>
@@ -177,16 +177,16 @@ const SplashScreen = ({ onStart, onPlayAudio }) => {
         'opacity-0 scale-95 blur-md'
       }`}>
         {/* Corner ornaments */}
-        <div className={`absolute -top-8 -left-8 text-5xl text-vintage-gold opacity-60 transition-all duration-500 ${
+        <div className={`absolute -top-5 -left-5 sm:-top-8 sm:-left-8 text-3xl sm:text-5xl text-vintage-gold opacity-60 transition-all duration-500 ${
           phase !== 'idle' ? 'opacity-0 -translate-x-4 -translate-y-4' : ''
         }`} style={{textShadow: '0 0 10px rgba(184,134,11,0.3)'}}>❧</div>
-        <div className={`absolute -top-8 -right-8 text-5xl text-vintage-gold opacity-60 rotate-90 transition-all duration-500 ${
+        <div className={`absolute -top-5 -right-5 sm:-top-8 sm:-right-8 text-3xl sm:text-5xl text-vintage-gold opacity-60 rotate-90 transition-all duration-500 ${
           phase !== 'idle' ? 'opacity-0 translate-x-4 -translate-y-4' : ''
         }`} style={{textShadow: '0 0 10px rgba(184,134,11,0.3)'}}>❧</div>
-        <div className={`absolute -bottom-8 -left-8 text-5xl text-vintage-gold opacity-60 -rotate-90 transition-all duration-500 ${
+        <div className={`absolute -bottom-5 -left-5 sm:-bottom-8 sm:-left-8 text-3xl sm:text-5xl text-vintage-gold opacity-60 -rotate-90 transition-all duration-500 ${
           phase !== 'idle' ? 'opacity-0 -translate-x-4 translate-y-4' : ''
         }`} style={{textShadow: '0 0 10px rgba(184,134,11,0.3)'}}>❧</div>
-        <div className={`absolute -bottom-8 -right-8 text-5xl text-vintage-gold opacity-60 rotate-180 transition-all duration-500 ${
+        <div className={`absolute -bottom-5 -right-5 sm:-bottom-8 sm:-right-8 text-3xl sm:text-5xl text-vintage-gold opacity-60 rotate-180 transition-all duration-500 ${
           phase !== 'idle' ? 'opacity-0 translate-x-4 translate-y-4' : ''
         }`} style={{textShadow: '0 0 10px rgba(184,134,11,0.3)'}}>❧</div>
 
@@ -232,16 +232,16 @@ const SplashScreen = ({ onStart, onPlayAudio }) => {
         </div>
 
         {/* Call to action button */}
-        <div className="mt-8">
+        <div className="mt-6 sm:mt-8">
           <button
             onClick={handleClick}
             disabled={isOpening}
-            className={`vintage-button font-serif text-lg md:text-xl px-10 py-4 rounded-sm tracking-wide uppercase transition-all duration-300 ${
+            className={`vintage-button font-serif text-base sm:text-lg md:text-xl px-6 sm:px-10 py-3 sm:py-4 rounded-sm tracking-wide uppercase transition-all duration-300 ${
               isOpening ? 'scale-110 shadow-[0_0_40px_rgba(184,134,11,0.6)]' : ''
             }`}
           >
-            <span className="relative z-10 flex items-center gap-3">
-              <span className="text-xl">📖</span>
+            <span className="relative z-10 flex items-center gap-2 sm:gap-3">
+              <span className="text-lg sm:text-xl">📖</span>
               Open the Album
             </span>
           </button>
@@ -251,11 +251,11 @@ const SplashScreen = ({ onStart, onPlayAudio }) => {
           Click to begin our story
         </p>
 
-        {/* Floating vintage elements */}
-        <div className="absolute -top-10 left-1/4 text-3xl opacity-20 wind-drift" style={{ animationDelay: '0s' }}>📷</div>
-        <div className="absolute -bottom-10 right-1/4 text-3xl opacity-20 wind-drift" style={{ animationDelay: '1.5s' }}>🎵</div>
-        <div className="absolute top-1/2 -left-14 text-2xl opacity-15 wind-drift" style={{ animationDelay: '0.8s' }}>🎞️</div>
-        <div className="absolute top-1/2 -right-14 text-2xl opacity-15 wind-drift" style={{ animationDelay: '2s' }}>✉️</div>
+        {/* Floating vintage elements - hidden on small screens */}
+        <div className="hidden sm:block absolute -top-10 left-1/4 text-3xl opacity-20 wind-drift" style={{ animationDelay: '0s' }}>📷</div>
+        <div className="hidden sm:block absolute -bottom-10 right-1/4 text-3xl opacity-20 wind-drift" style={{ animationDelay: '1.5s' }}>🎵</div>
+        <div className="hidden md:block absolute top-1/2 -left-14 text-2xl opacity-15 wind-drift" style={{ animationDelay: '0.8s' }}>🎞️</div>
+        <div className="hidden md:block absolute top-1/2 -right-14 text-2xl opacity-15 wind-drift" style={{ animationDelay: '2s' }}>✉️</div>
       </div>
 
       {/* Sparkle canvas */}
