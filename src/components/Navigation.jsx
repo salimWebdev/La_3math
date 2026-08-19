@@ -7,9 +7,9 @@ const Navigation = ({ currentPage, onNavigate }) => {
   const menuRef = useRef(null);
 
   const navItems = [
-    { id: 'classmates', label: 'Classmates', icon: '/assets/photos/classmates_icon.png' },
-    { id: 'souvenirs', label: 'Souvenirs', icon: '/assets/photos/souvenirs_icon.png' },
-    { id: 'achievements', label: 'Achievements', icon: '/assets/photos/achievements_icon.png' }
+    { id: 'classmates', label: 'Classmates', icon: 'https://res.cloudinary.com/gdbmrkzo/image/upload/v1787178139/wxygndpjr3t4kbusia6d.png' },
+    { id: 'souvenirs', label: 'Souvenirs', icon: 'https://res.cloudinary.com/gdbmrkzo/image/upload/v1787178306/duvpoggtbk2tinzvkozw.png' },
+    { id: 'achievements', label: 'Achievements', icon: 'https://res.cloudinary.com/gdbmrkzo/image/upload/v1787178011/txdyab7ta5za8bd9jrtd.png' }
   ];
 
   const handleClick = (id) => {
@@ -41,7 +41,7 @@ const Navigation = ({ currentPage, onNavigate }) => {
       {/* Navbar bar - overflow hidden clips the bg image and overlays */}
       <div className="relative overflow-hidden" ref={menuRef}>
         <img
-          src="/assets/photos/navbar-bg.png"
+              src="https://res.cloudinary.com/gdbmrkzo/image/upload/v1787178148/ahlc4lvgtjn4p4g5jp2p.png"
           alt="Navigation"
           className="w-full h-auto"
           style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.3))' }}
@@ -52,7 +52,7 @@ const Navigation = ({ currentPage, onNavigate }) => {
           <div className="flex items-center gap-2">
             {/* Left key */}
             <img
-              src="/assets/photos/key.png"
+              src="https://res.cloudinary.com/gdbmrkzo/image/upload/v1787178146/cbluusc6twuwvsorxw6x.png"
               alt=""
               className="w-20 h-auto opacity-80 transition-transform duration-500 hover:scale-110"
               style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))' }}
@@ -126,7 +126,7 @@ const Navigation = ({ currentPage, onNavigate }) => {
 
             {/* Right key flipped */}
             <img
-              src="/assets/photos/key.png"
+              src="https://res.cloudinary.com/gdbmrkzo/image/upload/v1787178146/cbluusc6twuwvsorxw6x.png"
               alt=""
               className="w-20 h-auto opacity-80 transition-transform duration-500 hover:scale-110"
               style={{
@@ -144,7 +144,7 @@ const Navigation = ({ currentPage, onNavigate }) => {
           <div className="flex items-center gap-2 lg:gap-3">
             {/* Left key */}
             <img
-              src="/assets/photos/key.png"
+              src="https://res.cloudinary.com/gdbmrkzo/image/upload/v1787178146/cbluusc6twuwvsorxw6x.png"
               alt=""
               className="w-12 lg:w-14 h-auto opacity-80 transition-transform duration-500 hover:scale-110"
               style={{ filter: 'drop-shadow(0 2px 3px rgba(0,0,0,0.3))' }}
@@ -207,7 +207,7 @@ const Navigation = ({ currentPage, onNavigate }) => {
 
             {/* Right key flipped */}
             <img
-              src="/assets/photos/key.png"
+              src="https://res.cloudinary.com/gdbmrkzo/image/upload/v1787178146/cbluusc6twuwvsorxw6x.png"
               alt=""
               className="w-12 lg:w-14 h-auto opacity-80 transition-transform duration-500 hover:scale-110"
               style={{
