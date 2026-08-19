@@ -208,7 +208,7 @@ const SplashScreen = ({ onStart, onPlayAudio }) => {
                 <span className="text-[#B8860B] text-xs">✦</span>
                 <svg width="36" height="10" viewBox="0 0 36 10" className="scale-x-[-1]"><path d="M0 5 Q9 0, 18 5 Q27 10, 36 5" fill="none" stroke="#B8860B" strokeWidth="1"/></svg>
               </div>
-              <div className="inline-block rounded-full px-5 py-1" style={{ background: 'linear-gradient(135deg, #6B3A1C, #5C2E14)', border: '1.5px solid #B8860B', boxShadow: '0 2px 8px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.12)' }}>
+              <div className="inline-block rounded-full px-5 py-1 relative" style={{ zIndex: 999, background: 'linear-gradient(135deg, #6B3A1C, #5C2E14)', border: '1.5px solid #B8860B', boxShadow: '0 2px 8px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.12)' }}>
                 <span className="font-serif text-[#FAF0E6] text-[0.6rem] tracking-[0.3em] uppercase">2024 — 2026</span>
               </div>
             </div>
@@ -229,7 +229,7 @@ const SplashScreen = ({ onStart, onPlayAudio }) => {
           </div>
 
           {/* Year badge */}
-          <div className="inline-block rounded-full px-6 py-1.5" style={{ background: 'linear-gradient(135deg, #6B3A1C, #5C2E14)', border: '1.5px solid #B8860B', boxShadow: '0 4px 15px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.12)' }}>
+          <div className="inline-block rounded-full px-6 py-1.5 relative" style={{ zIndex: 999, background: 'linear-gradient(135deg, #6B3A1C, #5C2E14)', border: '1.5px solid #B8860B', boxShadow: '0 4px 15px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.12)' }}>
             <span className="font-serif text-[#FAF0E6] text-[0.6rem] tracking-[0.3em] uppercase">2024 — 2026</span>
           </div>
         </div>
