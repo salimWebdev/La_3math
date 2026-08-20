@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { souvenirs } from '../data/memoryData';
+import LazyImage from './LazyImage';
 
 const isCloudinary = (url) => url.includes('cloudinary.com');
 
@@ -201,18 +202,16 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                       {souvenir.type === 'video' ? (
                         <div className="relative">
                           {souvenir.thumbnail ? (
-                            <img
+                            <LazyImage
                               src={souvenir.thumbnail}
                               alt={souvenir.caption}
                               className="w-full aspect-[9/16] object-cover sepia-photo"
-                              loading="eager"
                             />
                           ) : isCloudinary(souvenir.src) ? (
-                            <img
+                            <LazyImage
                               src={getVideoThumbnail(souvenir.src)}
                               alt={souvenir.caption}
                               className="w-full aspect-[9/16] object-cover sepia-photo"
-                              loading="eager"
                               onError={(e) => {
                                 e.target.style.display = 'none';
                                 e.target.parentElement.querySelector('.placeholder-icon').style.display = 'flex';
@@ -240,11 +239,10 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                         </div>
                       ) : (
                         <div className="bg-gradient-to-br from-parchment to-cream flex items-center justify-center relative">
-                          <img
+                          <LazyImage
                             src={souvenir.src}
                             alt={souvenir.caption}
                             className="w-full object-cover sepia-photo"
-                            loading="eager"
                             onError={(e) => {
                               e.target.style.display = 'none';
                               e.target.parentElement.querySelector('.placeholder-icon').style.display = 'flex';
