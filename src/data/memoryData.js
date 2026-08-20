@@ -431,6 +431,34 @@ export const souvenirs = [
     src: "/assets/videos/souvenir-video-0007.mp4",
     thumbnail: "/assets/videos/souvenir-video-0007-thumb.jpg",
     caption: "Souvenir"
+  },
+  {
+    id: 44,
+    type: "video",
+    src: "/assets/videos/souvenir-video-0044.mp4",
+    thumbnail: "/assets/videos/souvenir-video-0044-thumb.jpg",
+    caption: "Memory captured"
+  },
+  {
+    id: 45,
+    type: "video",
+    src: "/assets/videos/souvenir-video-0045.mp4",
+    thumbnail: "/assets/videos/souvenir-video-0045-thumb.jpg",
+    caption: "Memory captured"
+  },
+  {
+    id: 46,
+    type: "video",
+    src: "/assets/videos/souvenir-video-0046.mp4",
+    thumbnail: "/assets/videos/souvenir-video-0046-thumb.jpg",
+    caption: "Memory captured"
+  },
+  {
+    id: 47,
+    type: "video",
+    src: "/assets/videos/souvenir-video-0047.mp4",
+    thumbnail: "/assets/videos/souvenir-video-0047-thumb.jpg",
+    caption: "Memory captured"
   }
 ];
 
