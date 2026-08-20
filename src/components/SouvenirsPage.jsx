@@ -23,28 +23,55 @@ const VideoThumbnail = ({ src, caption }) => {
   const canvasRef = useRef(null);
   const videoRef = useRef(null);
   const [thumbReady, setThumbReady] = useState(false);
+  const capturedRef = useRef(false);
 
   const captureFrame = useCallback(() => {
+    if (capturedRef.current) return;
     const video = videoRef.current;
     const canvas = canvasRef.current;
-    if (!video || !canvas) return;
-    canvas.width = video.videoWidth || 320;
-    canvas.height = video.videoHeight || 240;
+    if (!video || !canvas || !video.videoWidth) return;
+    capturedRef.current = true;
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
     const ctx = canvas.getContext('2d');
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
     setThumbReady(true);
   }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const onMeta = () => {
+      video.currentTime = 1;
+    };
+    const onSeeked = () => {
+      captureFrame();
+    };
+    const onLoaded = () => {
+      captureFrame();
+    };
+
+    video.addEventListener('loadedmetadata', onMeta);
+    video.addEventListener('seeked', onSeeked);
+    video.addEventListener('loadeddata', onLoaded);
+
+    return () => {
+      video.removeEventListener('loadedmetadata', onMeta);
+      video.removeEventListener('seeked', onSeeked);
+      video.removeEventListener('loadeddata', onLoaded);
+    };
+  }, [captureFrame]);
 
   return (
     <div className="relative">
       <video
         ref={videoRef}
         src={src}
-        preload="metadata"
+        preload="auto"
         muted
-        onLoadedData={captureFrame}
-        onSeeked={captureFrame}
-        style={{ display: 'none' }}
+        playsInline
+        style={{ position: 'absolute', width: '1px', height: '1px', opacity: 0, pointerEvents: 'none' }}
       />
       {thumbReady ? (
         <canvas
@@ -359,6 +386,7 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                       poster={getVideoThumbnail(selectedSouvenir.src)}
                       controls
                       preload="auto"
+                      playsInline
                       style={{
                         width: '100%',
                         maxHeight: '60vh',
@@ -373,6 +401,7 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                       onLoadedData={handleVideoLoadedData}
                       onWaiting={handleVideoWaiting}
                       onCanPlay={handleVideoCanPlay}
+                      onError={() => { setVideoLoading(false); setVideoReady(true); }}
                     >
                       Your browser does not support the video tag.
                     </video>
