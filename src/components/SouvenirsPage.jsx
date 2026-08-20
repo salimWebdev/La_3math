@@ -1,18 +1,66 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { souvenirs } from '../data/memoryData';
 import ScrollReveal from './ScrollReveal';
 
+const isCloudinary = (url) => url.includes('cloudinary.com');
+
 const getVideoThumbnail = (videoUrl) => {
+  if (!isCloudinary(videoUrl)) return null;
   return videoUrl
     .replace('/video/upload/', '/video/upload/so_0/')
     .replace('.mp4', '.jpg');
 };
 
 const getOptimizedVideoUrl = (videoUrl) => {
+  if (!isCloudinary(videoUrl)) return videoUrl;
   return videoUrl
     .replace('/video/upload/', '/video/upload/so_0/')
     .replace('.mp4', '.mp4');
+};
+
+const VideoThumbnail = ({ src, caption }) => {
+  const canvasRef = useRef(null);
+  const videoRef = useRef(null);
+  const [thumbReady, setThumbReady] = useState(false);
+
+  const captureFrame = useCallback(() => {
+    const video = videoRef.current;
+    const canvas = canvasRef.current;
+    if (!video || !canvas) return;
+    canvas.width = video.videoWidth || 320;
+    canvas.height = video.videoHeight || 240;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    setThumbReady(true);
+  }, []);
+
+  return (
+    <div className="relative">
+      <video
+        ref={videoRef}
+        src={src}
+        preload="metadata"
+        muted
+        onLoadedData={captureFrame}
+        onSeeked={captureFrame}
+        style={{ display: 'none' }}
+      />
+      {thumbReady ? (
+        <canvas
+          ref={canvasRef}
+          className="w-full object-cover sepia-photo"
+          style={{ display: 'block' }}
+        />
+      ) : (
+        <div className="w-full aspect-video bg-gradient-to-br from-parchment to-cream flex items-center justify-center">
+          <div className="placeholder-icon flex items-center justify-center h-48 text-5xl text-warm-beige/40">
+            🎬
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
@@ -131,16 +179,20 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                     <div className="bg-gradient-to-br from-parchment to-cream photo-inner-shadow overflow-hidden rounded-sm">
                       {souvenir.type === 'video' ? (
                         <div className="relative">
-                          <img
-                            src={getVideoThumbnail(souvenir.src)}
-                            alt={souvenir.caption}
-                            className="w-full object-cover sepia-photo"
-                            loading="lazy"
-                            onError={(e) => {
-                              e.target.style.display = 'none';
-                              e.target.parentElement.querySelector('.placeholder-icon').style.display = 'flex';
-                            }}
-                          />
+                          {isCloudinary(souvenir.src) ? (
+                            <img
+                              src={getVideoThumbnail(souvenir.src)}
+                              alt={souvenir.caption}
+                              className="w-full object-cover sepia-photo"
+                              loading="lazy"
+                              onError={(e) => {
+                                e.target.style.display = 'none';
+                                e.target.parentElement.querySelector('.placeholder-icon').style.display = 'flex';
+                              }}
+                            />
+                          ) : (
+                            <VideoThumbnail src={souvenir.src} caption={souvenir.caption} />
+                          )}
                           <div className="placeholder-icon hidden items-center justify-center h-48 text-5xl text-warm-beige/40">
                             🎬
                           </div>
