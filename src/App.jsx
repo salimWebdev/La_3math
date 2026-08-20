@@ -81,6 +81,9 @@ function App() {
       {/* Floating wind particles */}
       <WindParticles count={16} />
 
+      {/* Candlelight flicker overlay */}
+      <div className="candlelight-flicker" />
+
       {/* Splash Screen */}
       {showSplash && <SplashScreen onStart={handleStart} onPlayAudio={playAudio} />}
 
