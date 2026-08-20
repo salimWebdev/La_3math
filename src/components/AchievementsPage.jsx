@@ -1,31 +1,34 @@
 import { achievements } from '../data/memoryData';
+import ScrollReveal from './ScrollReveal';
 
 const AchievementsPage = () => {
   return (
     <div className="animate-fade-in">
       {/* Page Header */}
-      <div className="text-center mb-10 sm:mb-16">
-        <div className="flex justify-center mb-4">
-          <span className="flourish text-2xl sm:text-3xl tracking-widest opacity-60 wind-sway">~ ~ ~</span>
+      <ScrollReveal animation="fade-up" delay={0}>
+        <div className="text-center mb-10 sm:mb-16">
+          <div className="flex justify-center mb-4">
+            <span className="flourish text-2xl sm:text-3xl tracking-widest opacity-60 wind-sway">~ ~ ~</span>
+          </div>
+
+          <p className="font-script text-vintage-gold text-lg sm:text-xl mb-2 opacity-80 wind-drift">Our Journey of</p>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-sepia mb-4 embossed-text">
+            Glorious Achievements
+          </h2>
+
+          <div className="flex items-center justify-center gap-3 my-4 sm:my-6 wind-sway">
+            <div className="w-12 sm:w-16 h-px bg-gradient-to-r from-transparent to-vintage-gold" />
+            <span className="text-vintage-gold text-sm">✦</span>
+            <span className="text-vintage-gold text-xl sm:text-2xl animate-shimmer">❦</span>
+            <span className="text-vintage-gold text-sm">✦</span>
+            <div className="w-12 sm:w-16 h-px bg-gradient-to-l from-transparent to-vintage-gold" />
+          </div>
+
+          <p className="font-body text-warm-brown italic max-w-xl mx-auto text-base sm:text-lg px-2">
+            Milestones and accomplishments that made us proud
+          </p>
         </div>
-
-        <p className="font-script text-vintage-gold text-lg sm:text-xl mb-2 opacity-80 wind-drift">Our Journey of</p>
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-sepia mb-4 embossed-text">
-          Glorious Achievements
-        </h2>
-
-        <div className="flex items-center justify-center gap-3 my-4 sm:my-6 wind-sway">
-          <div className="w-12 sm:w-16 h-px bg-gradient-to-r from-transparent to-vintage-gold" />
-          <span className="text-vintage-gold text-sm">✦</span>
-          <span className="text-vintage-gold text-xl sm:text-2xl animate-shimmer">❦</span>
-          <span className="text-vintage-gold text-sm">✦</span>
-          <div className="w-12 sm:w-16 h-px bg-gradient-to-l from-transparent to-vintage-gold" />
-        </div>
-
-        <p className="font-body text-warm-brown italic max-w-xl mx-auto text-base sm:text-lg px-2">
-          Milestones and accomplishments that made us proud
-        </p>
-      </div>
+      </ScrollReveal>
 
       {/* Timeline */}
       <div className="relative max-w-4xl mx-auto">
@@ -40,13 +43,17 @@ const AchievementsPage = () => {
         {/* Achievement Items */}
         <div className="space-y-16">
           {achievements.map((achievement, index) => (
-            <div
+            <ScrollReveal
               key={achievement.id}
-              className={`relative flex items-center ${
-                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-              }`}
-              style={{ animationDelay: `${index * 0.2}s` }}
+              animation={index % 2 === 0 ? 'fade-right' : 'fade-left'}
+              delay={150}
+              distance={40}
             >
+              <div
+                className={`relative flex items-center ${
+                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                }`}
+              >
               {/* Timeline milestone marker */}
               <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 z-10">
                 <div className="relative">
@@ -102,13 +109,14 @@ const AchievementsPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
 
       {/* Certificate Section */}
-      <div className="mt-12 sm:mt-20 max-w-2xl mx-auto px-2 sm:px-4">
+      <ScrollReveal animation="scale-in" delay={200}>
+        <div className="mt-12 sm:mt-20 max-w-2xl mx-auto px-2 sm:px-4">
         {/* Certificate outer frame */}
         <div className="double-frame rounded-sm p-2 sm:p-3">
           {/* Inner ornate border */}
@@ -181,7 +189,7 @@ const AchievementsPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
 
       {/* Empty state */}
       {achievements.length === 0 && (

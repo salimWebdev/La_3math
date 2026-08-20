@@ -1,31 +1,34 @@
 import { classmates } from '../data/memoryData';
+import ScrollReveal from './ScrollReveal';
 
 const ClassmatesPage = () => {
   return (
     <div className="animate-fade-in">
       {/* Page Header */}
-      <div className="text-center mb-10 sm:mb-16">
-        <div className="flex justify-center mb-4">
-          <span className="flourish text-2xl sm:text-3xl tracking-widest opacity-60 wind-sway">~ ~ ~</span>
+      <ScrollReveal animation="fade-up" delay={0}>
+        <div className="text-center mb-10 sm:mb-16">
+          <div className="flex justify-center mb-4">
+            <span className="flourish text-2xl sm:text-3xl tracking-widest opacity-60 wind-sway">~ ~ ~</span>
+          </div>
+
+          <p className="font-script text-vintage-gold text-lg sm:text-xl mb-2 opacity-80 wind-drift">The People Who</p>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-sepia mb-4 embossed-text">
+            Our Beloved Classmates
+          </h2>
+
+          <div className="flex items-center justify-center gap-3 my-4 sm:my-6 wind-sway">
+            <div className="w-12 sm:w-16 h-px bg-gradient-to-r from-transparent to-vintage-gold" />
+            <span className="text-vintage-gold text-sm">✦</span>
+            <span className="text-vintage-gold text-xl sm:text-2xl animate-shimmer">❦</span>
+            <span className="text-vintage-gold text-sm">✦</span>
+            <div className="w-12 sm:w-16 h-px bg-gradient-to-l from-transparent to-vintage-gold" />
+          </div>
+
+          <p className="font-body text-warm-brown italic max-w-xl mx-auto text-base sm:text-lg px-2">
+            The wonderful people who made our school days unforgettable
+          </p>
         </div>
-
-        <p className="font-script text-vintage-gold text-lg sm:text-xl mb-2 opacity-80 wind-drift">The People Who</p>
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-sepia mb-4 embossed-text">
-          Our Beloved Classmates
-        </h2>
-
-        <div className="flex items-center justify-center gap-3 my-4 sm:my-6 wind-sway">
-          <div className="w-12 sm:w-16 h-px bg-gradient-to-r from-transparent to-vintage-gold" />
-          <span className="text-vintage-gold text-sm">✦</span>
-          <span className="text-vintage-gold text-xl sm:text-2xl animate-shimmer">❦</span>
-          <span className="text-vintage-gold text-sm">✦</span>
-          <div className="w-12 sm:w-16 h-px bg-gradient-to-l from-transparent to-vintage-gold" />
-        </div>
-
-        <p className="font-body text-warm-brown italic max-w-xl mx-auto text-base sm:text-lg px-2">
-          The wonderful people who made our school days unforgettable
-        </p>
-      </div>
+      </ScrollReveal>
 
       {/* Full-width sections for each classmate */}
       <div className="space-y-8 sm:space-y-12">
@@ -33,10 +36,11 @@ const ClassmatesPage = () => {
           const isEven = index % 2 === 0;
 
           return (
-            <div
+            <ScrollReveal
               key={classmate.id}
-              className="animate-fade-in"
-              style={{ animationDelay: `${index * 0.15}s` }}
+              animation={isEven ? 'fade-right' : 'fade-left'}
+              delay={100}
+              distance={40}
             >
               {/* Full-width ornate section */}
               <div className="ornate-frame rounded-sm overflow-hidden">
@@ -112,7 +116,7 @@ const ClassmatesPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           );
         })}
       </div>

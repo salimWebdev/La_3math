@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { souvenirs } from '../data/memoryData';
+import ScrollReveal from './ScrollReveal';
 
 const getVideoThumbnail = (videoUrl) => {
   return videoUrl
@@ -66,28 +67,30 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
   return (
     <div className="animate-fade-in">
       {/* Page Header */}
-      <div className="text-center mb-10 sm:mb-16">
-        <div className="flex justify-center mb-4">
-          <span className="flourish text-2xl sm:text-3xl tracking-widest opacity-60 wind-sway">~ ~ ~</span>
+      <ScrollReveal animation="fade-up" delay={0}>
+        <div className="text-center mb-10 sm:mb-16">
+          <div className="flex justify-center mb-4">
+            <span className="flourish text-2xl sm:text-3xl tracking-widest opacity-60 wind-sway">~ ~ ~</span>
+          </div>
+
+          <p className="font-script text-vintage-gold text-lg sm:text-xl mb-2 opacity-80 wind-drift">Treasured Memories of</p>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-sepia mb-4 embossed-text">
+            Our Cherished Souvenirs
+          </h2>
+
+          <div className="flex items-center justify-center gap-3 my-4 sm:my-6 wind-sway">
+            <div className="w-12 sm:w-16 h-px bg-gradient-to-r from-transparent to-vintage-gold" />
+            <span className="text-vintage-gold text-sm">✦</span>
+            <span className="text-vintage-gold text-xl sm:text-2xl animate-shimmer">❦</span>
+            <span className="text-vintage-gold text-sm">✦</span>
+            <div className="w-12 sm:w-16 h-px bg-gradient-to-l from-transparent to-vintage-gold" />
+          </div>
+
+          <p className="font-body text-warm-brown italic max-w-xl mx-auto text-base sm:text-lg px-2">
+            Photos and videos from our unforgettable moments together
+          </p>
         </div>
-
-        <p className="font-script text-vintage-gold text-lg sm:text-xl mb-2 opacity-80 wind-drift">Treasured Memories of</p>
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-sepia mb-4 embossed-text">
-          Our Cherished Souvenirs
-        </h2>
-
-        <div className="flex items-center justify-center gap-3 my-4 sm:my-6 wind-sway">
-          <div className="w-12 sm:w-16 h-px bg-gradient-to-r from-transparent to-vintage-gold" />
-          <span className="text-vintage-gold text-sm">✦</span>
-          <span className="text-vintage-gold text-xl sm:text-2xl animate-shimmer">❦</span>
-          <span className="text-vintage-gold text-sm">✦</span>
-          <div className="w-12 sm:w-16 h-px bg-gradient-to-l from-transparent to-vintage-gold" />
-        </div>
-
-        <p className="font-body text-warm-brown italic max-w-xl mx-auto text-base sm:text-lg px-2">
-          Photos and videos from our unforgettable moments together
-        </p>
-      </div>
+      </ScrollReveal>
 
       {/* Gallery - Pinterest Masonry Layout */}
       <div className="columns-2 md:columns-2 lg:columns-3 gap-3 md:gap-4 space-y-3 md:space-y-4">
@@ -96,12 +99,16 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
           const rotation = rotations[index % rotations.length];
 
           return (
-            <div
+            <ScrollReveal
               key={souvenir.id}
+              animation="scale-in"
+              delay={index * 30}
+              distance={20}
               className={`break-inside-avoid ornate-hover cursor-pointer ${rotation}`}
-              style={{ animationDelay: `${index * 0.05}s` }}
-              onClick={() => setSelectedSouvenir(souvenir)}
             >
+              <div
+                onClick={() => setSelectedSouvenir(souvenir)}
+              >
               {/* Polaroid / Scrapbook card */}
               <div className="relative mb-3 md:mb-4">
                 {/* Tape effect on top */}
@@ -186,7 +193,7 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           );
         })}
       </div>
