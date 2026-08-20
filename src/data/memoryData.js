@@ -459,6 +459,60 @@ export const souvenirs = [
     src: "/assets/videos/souvenir-video-0047.mp4",
     thumbnail: "/assets/videos/souvenir-video-0047-thumb.jpg",
     caption: "Memory captured"
+  },
+  {
+    id: 48,
+    type: "photo",
+    src: "/assets/photos/snapchat-0048.jpg",
+    caption: "Memory captured"
+  },
+  {
+    id: 49,
+    type: "photo",
+    src: "/assets/photos/snapchat-0049.jpg",
+    caption: "Memory captured"
+  },
+  {
+    id: 50,
+    type: "photo",
+    src: "/assets/photos/snapchat-0050.jpg",
+    caption: "Memory captured"
+  },
+  {
+    id: 51,
+    type: "photo",
+    src: "/assets/photos/snapchat-0051.jpg",
+    caption: "Memory captured"
+  },
+  {
+    id: 52,
+    type: "photo",
+    src: "/assets/photos/snapchat-0052.jpg",
+    caption: "Memory captured"
+  },
+  {
+    id: 53,
+    type: "photo",
+    src: "/assets/photos/snapchat-0053.jpg",
+    caption: "Memory captured"
+  },
+  {
+    id: 54,
+    type: "photo",
+    src: "/assets/photos/snapchat-0054.jpg",
+    caption: "Memory captured"
+  },
+  {
+    id: 55,
+    type: "photo",
+    src: "/assets/photos/snapchat-0055.jpg",
+    caption: "Memory captured"
+  },
+  {
+    id: 56,
+    type: "photo",
+    src: "/assets/photos/snapchat-0056.jpg",
+    caption: "Memory captured"
   }
 ];
 
