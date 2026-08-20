@@ -150,6 +150,13 @@ export const classmates = [
     photo: "https://res.cloudinary.com/gdbmrkzo/image/upload/v1787178127/cnvsaxotebdbocpjifii.png",
     description: "Calm and peaceful, you will probably never hear her voice unless it's something really important. 😂 She's so quiet that sometimes we wonder if she's actually in the classroom or just a very well-behaved ghost. 👻",
     nickname: "Cheradi"
+  },
+  {
+    id: 17,
+    name: "Adel",
+    photo: "/assets/photos/adel-lhacker.png",
+    description: "Adel is a silent person, but whenever he finally talks, everyone listens—his words hit like a bullet. 🎯 He's the class hacker; he might literally be sitting right behind you, and you wouldn't even notice. 😂💻",
+    nickname: "Lhacker"
   }
   // Add more classmates as needed...
 ];
