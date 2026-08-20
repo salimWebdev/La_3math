@@ -75,7 +75,7 @@ const VideoThumbnail = ({ src, caption }) => {
       {thumbReady ? (
         <canvas
           ref={canvasRef}
-          className="w-full object-cover sepia-photo"
+          className="w-full aspect-[9/16] object-cover sepia-photo"
           style={{ display: 'block' }}
         />
       ) : (
@@ -204,15 +204,15 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                             <img
                               src={souvenir.thumbnail}
                               alt={souvenir.caption}
-                              className="w-full object-cover sepia-photo"
-                              loading="lazy"
+                              className="w-full aspect-[9/16] object-cover sepia-photo"
+                              loading="eager"
                             />
                           ) : isCloudinary(souvenir.src) ? (
                             <img
                               src={getVideoThumbnail(souvenir.src)}
                               alt={souvenir.caption}
-                              className="w-full object-cover sepia-photo"
-                              loading="lazy"
+                              className="w-full aspect-[9/16] object-cover sepia-photo"
+                              loading="eager"
                               onError={(e) => {
                                 e.target.style.display = 'none';
                                 e.target.parentElement.querySelector('.placeholder-icon').style.display = 'flex';
@@ -239,12 +239,12 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                           </div>
                         </div>
                       ) : (
-                        <div className="aspect-[4/3] bg-gradient-to-br from-parchment to-cream flex items-center justify-center relative">
+                        <div className="bg-gradient-to-br from-parchment to-cream flex items-center justify-center relative">
                           <img
                             src={souvenir.src}
                             alt={souvenir.caption}
-                            className="w-full h-full object-cover sepia-photo"
-                            loading="lazy"
+                            className="w-full object-cover sepia-photo"
+                            loading="eager"
                             onError={(e) => {
                               e.target.style.display = 'none';
                               e.target.parentElement.querySelector('.placeholder-icon').style.display = 'flex';
