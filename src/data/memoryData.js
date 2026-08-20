@@ -424,6 +424,12 @@ export const souvenirs = [
     type: "photo",
     src: "https://res.cloudinary.com/gdbmrkzo/image/upload/v1787178285/d8bnm6mbbhg2mtcagwaw.jpg",
     caption: "Memory captured"
+  },
+  {
+    id: 43,
+    type: "video",
+    src: "/assets/videos/souvenir-video-0007.mp4",
+    caption: "Memory captured"
   }
 ];
 
