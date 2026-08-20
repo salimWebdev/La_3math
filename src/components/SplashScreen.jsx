@@ -169,7 +169,7 @@ const SplashScreen = ({ onStart, onPlayAudio }) => {
       </div>
 
       {/* Main content */}
-      <div className={`relative z-10 w-full max-w-lg mx-auto px-6 transition-all duration-700 ${
+      <div className={`relative z-10 w-full max-w-xl mx-auto px-6 transition-all duration-700 ${
         phase === 'idle' ? 'opacity-100 scale-100' :
         phase === 'sparkle' ? 'opacity-100 scale-105' :
         phase === 'dissolve' ? 'opacity-0 scale-110 blur-sm' :
@@ -200,9 +200,9 @@ const SplashScreen = ({ onStart, onPlayAudio }) => {
               style={{ filter: 'drop-shadow(0 10px 40px rgba(30,15,8,0.6))' }}
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center" style={{ padding: '22% 22%' }}>
-              <p className="font-script text-[#8B6914] text-sm mb-1 opacity-80">Welcome to the</p>
-              <h1 className="font-serif text-[#3E2723] text-3xl leading-none mb-2 text-center embossed-text">Class of 2026</h1>
-              <p className="font-body text-[#8B6914] text-xs italic tracking-wide mb-2 opacity-65">"Together We Shined"</p>
+              <p className="font-script text-[#8B6914] text-base mb-1 opacity-80">Welcome to the</p>
+              <h1 className="font-serif text-[#3E2723] text-4xl leading-none mb-2 text-center embossed-text">Class of 2026</h1>
+              <p className="font-body text-[#8B6914] text-sm italic tracking-wide mb-2 opacity-65">"Together We Shined"</p>
               <div className="flex items-center gap-2 mb-2 opacity-50">
                 <svg width="36" height="10" viewBox="0 0 36 10"><path d="M0 5 Q9 0, 18 5 Q27 10, 36 5" fill="none" stroke="#B8860B" strokeWidth="1"/></svg>
                 <span className="text-[#B8860B] text-xs">✦</span>
