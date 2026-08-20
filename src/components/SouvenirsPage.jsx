@@ -245,6 +245,7 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                   </div>
                 </div>
               </div>
+              </div>
             </ScrollReveal>
           );
         })}
