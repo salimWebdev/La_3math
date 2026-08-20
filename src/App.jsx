@@ -172,31 +172,36 @@ function App() {
         </div>
       )}
 
-      {/* Page Transition Overlay — 3D Page Curl */}
+      {/* Page Transition Overlay */}
       {transitioning && (
-        <div className="page-curl-overlay">
-          {/* Curling page sheet */}
-          <div className="page-curl-sheet">
-            {/* Page texture lines */}
-            <div className="absolute inset-0 opacity-10">
-              {[...Array(20)].map((_, i) => (
-                <div key={i} className="absolute left-0 right-0 h-px bg-[#8B6914]"
-                     style={{ top: `${(i + 1) * 5}%` }} />
-              ))}
-            </div>
-            {/* Center ornament */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-[#B8860B] text-5xl opacity-30">❦</span>
-            </div>
+        <div className="page-transition-overlay">
+          {/* Dark curtain left */}
+          <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#2C1810] via-[#3E2723] to-[#2C1810]"
+               style={{ transformOrigin: 'left', animation: 'curtainLeft 1s cubic-bezier(0.4, 0, 0.2, 1) forwards' }} />
+          {/* Dark curtain right */}
+          <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-[#2C1810] via-[#3E2723] to-[#2C1810]"
+               style={{ transformOrigin: 'right', animation: 'curtainRight 1s cubic-bezier(0.4, 0, 0.2, 1) forwards' }} />
+          {/* Gold flash */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#B8860B]/0 via-[#B8860B]/40 to-[#B8860B]/0"
+               style={{ animation: 'flashGold 1s ease-out forwards' }} />
+          {/* Center ornament */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-[#B8860B] text-6xl drop-shadow-[0_0_15px_rgba(184,134,11,0.5)]"
+                  style={{ animation: 'ornamentSpin 1s ease-in-out forwards' }}>❦</span>
           </div>
-          {/* Curl shadow */}
-          <div className="page-curl-shadow" />
-          {/* Gold fold edge */}
-          <div className="page-curl-edge" />
+          {/* Corner ornaments */}
+          <div className="absolute top-1/3 left-1/3 text-[#B8860B]/50 text-4xl"
+               style={{ animation: 'ornamentSpin 1s ease-in-out 0.1s forwards', opacity: 0 }}>✦</div>
+          <div className="absolute top-1/3 right-1/3 text-[#B8860B]/50 text-4xl"
+               style={{ animation: 'ornamentSpin 1s ease-in-out 0.15s forwards', opacity: 0 }}>✦</div>
+          <div className="absolute bottom-1/3 left-1/3 text-[#B8860B]/50 text-4xl"
+               style={{ animation: 'ornamentSpin 1s ease-in-out 0.2s forwards', opacity: 0 }}>✦</div>
+          <div className="absolute bottom-1/3 right-1/3 text-[#B8860B]/50 text-4xl"
+               style={{ animation: 'ornamentSpin 1s ease-in-out 0.25s forwards', opacity: 0 }}>✦</div>
           {/* Page name */}
-          <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 10 }}>
+          <div className="absolute inset-0 flex items-center justify-center mt-20">
             <p className="font-script text-[#B8860B] text-xl tracking-[0.3em] uppercase opacity-0 drop-shadow-[0_0_10px_rgba(184,134,11,0.4)]"
-               style={{ animation: 'textReveal 0.6s ease-out 0.15s forwards' }}>
+               style={{ animation: 'textReveal 0.6s ease-out 0.25s forwards' }}>
               {transitionPage}
             </p>
           </div>
