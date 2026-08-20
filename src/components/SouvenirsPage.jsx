@@ -196,7 +196,7 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                      }}>
 
                   {/* Media with ornate frame */}
-                  <div className="photo-frame-ornate gilded-shimmer rounded-sm mb-2 md:mb-3">
+                  <div className="photo-frame-ornate rounded-sm mb-2 md:mb-3">
                     <div className="bg-gradient-to-br from-parchment to-cream photo-inner-shadow overflow-hidden rounded-sm">
                       {souvenir.type === 'video' ? (
                         <div className="relative">
