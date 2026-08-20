@@ -5,6 +5,7 @@ import ClassmatesPage from './components/ClassmatesPage';
 import SouvenirsPage from './components/SouvenirsPage';
 import AchievementsPage from './components/AchievementsPage';
 import WindParticles from './components/WindParticles';
+import TypewriterText from './components/TypewriterText';
 import WaveDivider from './components/WaveDivider';
 import { classInfo } from './data/memoryData';
 
@@ -119,17 +120,33 @@ function App() {
 
                 {/* Text content */}
                 <div className="text-center space-y-4">
-                  <p className="font-body text-[#3E2723] text-sm md:text-base leading-relaxed italic" style={{ animation: 'textReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards', opacity: 0 }}>
-                    Since 2024, we've shared more than just a classroom. We shared laughs, memories, difficult days, and countless little moments that we'll probably never forget.
+                  <p className="font-body text-[#3E2723] text-sm md:text-base leading-relaxed italic">
+                    <TypewriterText
+                      text="Since 2024, we've shared more than just a classroom. We shared laughs, memories, difficult days, and countless little moments that we'll probably never forget."
+                      delay={500}
+                      speed={25}
+                    />
                   </p>
-                  <p className="font-body text-[#3E2723] text-sm md:text-base leading-relaxed italic" style={{ animation: 'textReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards', opacity: 0 }}>
-                    True friendship is not only about being together every day—it's about loyalty, standing by each other, and knowing that even when life takes us in different directions, the bond remains.
+                  <p className="font-body text-[#3E2723] text-sm md:text-base leading-relaxed italic">
+                    <TypewriterText
+                      text="True friendship is not only about being together every day—it's about loyalty, standing by each other, and knowing that even when life takes us in different directions, the bond remains."
+                      delay={4500}
+                      speed={25}
+                    />
                   </p>
-                  <p className="font-body text-[#3E2723] text-sm md:text-base leading-relaxed italic" style={{ animation: 'textReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards', opacity: 0 }}>
-                    Today, we're not just saying goodbye to classmates. We're saying goodbye to a chapter of our lives that we built together.
+                  <p className="font-body text-[#3E2723] text-sm md:text-base leading-relaxed italic">
+                    <TypewriterText
+                      text="Today, we're not just saying goodbye to classmates. We're saying goodbye to a chapter of our lives that we built together."
+                      delay={8750}
+                      speed={25}
+                    />
                   </p>
-                  <p className="font-body text-[#3E2723] text-sm md:text-base leading-relaxed italic" style={{ animation: 'textReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.1s forwards', opacity: 0 }}>
-                    We may be going our separate ways, but the memories, friendship, and loyalty we shared will always stay with us.
+                  <p className="font-body text-[#3E2723] text-sm md:text-base leading-relaxed italic">
+                    <TypewriterText
+                      text="We may be going our separate ways, but the memories, friendship, and loyalty we shared will always stay with us."
+                      delay={11000}
+                      speed={25}
+                    />
                   </p>
                 </div>
 
