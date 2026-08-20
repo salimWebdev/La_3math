@@ -206,7 +206,14 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                     <div className="bg-gradient-to-br from-parchment to-cream photo-inner-shadow overflow-hidden rounded-sm">
                       {souvenir.type === 'video' ? (
                         <div className="relative">
-                          {isCloudinary(souvenir.src) ? (
+                          {souvenir.thumbnail ? (
+                            <img
+                              src={souvenir.thumbnail}
+                              alt={souvenir.caption}
+                              className="w-full object-cover sepia-photo"
+                              loading="lazy"
+                            />
+                          ) : isCloudinary(souvenir.src) ? (
                             <img
                               src={getVideoThumbnail(souvenir.src)}
                               alt={souvenir.caption}
@@ -383,7 +390,7 @@ const SouvenirsPage = ({ onPauseAudio, onResumeAudio }) => {
                     <video
                       ref={videoRef}
                       src={getOptimizedVideoUrl(selectedSouvenir.src)}
-                      poster={getVideoThumbnail(selectedSouvenir.src)}
+                      poster={selectedSouvenir.thumbnail || getVideoThumbnail(selectedSouvenir.src)}
                       controls
                       preload="auto"
                       playsInline

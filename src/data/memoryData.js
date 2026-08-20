@@ -429,6 +429,7 @@ export const souvenirs = [
     id: 43,
     type: "video",
     src: "/assets/videos/souvenir-video-0007.mp4",
+    thumbnail: "/assets/videos/souvenir-video-0007-thumb.jpg",
     caption: "Souvenir"
   }
 ];
