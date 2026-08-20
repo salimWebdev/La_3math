@@ -220,21 +220,31 @@ const Navigation = ({ currentPage, onNavigate }) => {
 
         {/* Mobile Navigation - Hamburger button + page title */}
         <div className="md:hidden absolute inset-0 flex items-center justify-between px-4">
-          {/* Hamburger button */}
+          {/* Hamburger button with pill background */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="relative z-50 flex flex-col justify-center items-center w-8 h-8 gap-1.5"
+            className="relative z-50 flex flex-col justify-center items-center w-12 h-10 gap-1 rounded-full"
+            style={{
+              background: 'linear-gradient(135deg, rgba(245,230,200,0.85), rgba(232,213,183,0.9))',
+              border: '1.5px solid rgba(184,134,11,0.35)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.4)'
+            }}
             aria-label="Toggle navigation menu"
           >
-            <span className={`block w-5 h-0.5 bg-[#5C2E14] rounded-full transition-all duration-300 ${
-              isOpen ? 'rotate-45 translate-y-2' : ''
+            <span className={`block w-5 h-[2px] bg-[#5C2E14] rounded-full transition-all duration-300 ${
+              isOpen ? 'rotate-45 translate-y-[5px]' : ''
             }`} />
-            <span className={`block w-5 h-0.5 bg-[#5C2E14] rounded-full transition-all duration-300 ${
-              isOpen ? 'opacity-0' : ''
+            <span className={`block w-5 h-[2px] bg-[#5C2E14] rounded-full transition-all duration-300 ${
+              isOpen ? 'opacity-0 scale-0' : ''
             }`} />
-            <span className={`block w-5 h-0.5 bg-[#5C2E14] rounded-full transition-all duration-300 ${
-              isOpen ? '-rotate-45 -translate-y-2' : ''
+            <span className={`block w-5 h-[2px] bg-[#5C2E14] rounded-full transition-all duration-300 ${
+              isOpen ? '-rotate-45 -translate-y-[5px]' : ''
             }`} />
+            {!isOpen && (
+              <span className="absolute -bottom-4 text-[8px] font-serif text-[#8B6914] tracking-wider uppercase opacity-70">
+                Menu
+              </span>
+            )}
           </button>
 
           {/* Centered page title */}
